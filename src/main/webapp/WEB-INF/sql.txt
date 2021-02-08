@@ -50,11 +50,10 @@ create sequence qna_sequence;
 
 create table qna_board (
     qnaNo number primary key,
-    reviewTitle varchar2(50) not null,
-    reviewContent varchar2(3000) not null,
-    reviewDate Date not null,
+    qnaTitle varchar2(50) not null,
+    qnaContent varchar2(3000) not null,
+    qnaDate Date not null,
     id varchar2(20) not null,
-    orderNo number not null,
     FOREIGN KEY (id) REFERENCES member(id));
 
 create sequence review_reply_sequence;
@@ -84,3 +83,12 @@ create table cart (
     quantity number not null,
     FOREIGN KEY (id) REFERENCES member(id),
     FOREIGN KEY (productNo) REFERENCES product(productNo));
+    
+alter table member
+add constraint email unique (email);
+
+alter table member
+add constraint nickname unique (nickname);
+
+alter table qna_board
+add (replycnt number);

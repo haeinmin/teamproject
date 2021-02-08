@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.QnaMapper">
+	<select id="getList" resultType="org.zerock.domain.QnaVO">
+<![CDATA[
+select * from qna_board where qnano>0]]>
+	</select>
+
+	<insert id="insert">
+		insert into qna_board (qnaNo, qnatitle, qnacontent,
+		id, qnadate)
+		values (qna_sequence.nextval, #{qnaTitle}, #{qnaContent},
+		#{id}, sysdate)
+	</insert>
+
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="qnaNo" order="BEFORE"
+			resultType="int">
+			select qna_sequence.nextval from dual
+		</selectKey>
+		insert into qna_board (qnaNo, qnatitle, qnacontent, id, qnadate)
+		values (#{qnaNo}, #{qnaTitle}, #{qnaContent}, #{id},
+		sysdate)
+	</insert>
+
+	<select id="read" resultType="org.zerock.domain.QnaVO">
+		select * from qna_board where qnaNo
+		= #{qnaNo}
+	</select>
+
+	<delete id="delete">
+		delete from qna_board where qnaNo=#{qnaNo}
+	</delete>
+
+	<update id="update">
+		update qna_board
+		set qnaTitle=#{qnaTitle},
+		qnaContent =
+		#{qnaContent},
+		id = #{id}
+		where qnaNo = #{qnaNo}
+	</update>
+
+	<sql id="criteria">
+		<where>
+			<foreach item="type" collection="typeArr" separator="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						title LIKE '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'C'.toString()">
+						content LIKE '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'W'.toString()">
+						writer LIKE '%' || #{keyword} || '%'
+					</when>
+				</choose>
+			</foreach>
+		</where>
+	</sql>
+
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.QnaVO">
+<![CDATA[	
+	SELECT
+	 qnaNo, qnaTitle, qnaContent,
+	 id, qnaDate, replycnt
+	FROM
+	 (
+	  SELECT 
+	   ROW_NUMBER() OVER (ORDER BY qnaNo DESC) rn,
+	   qnaNo, qnaTitle, qnaContent, id, qnaDate, replycnt
+	  FROM
+	   qna_board
+]]>
+		<include refid="criteria"></include>
+
+<![CDATA[
+	 )
+	WHERE
+	 rn BETWEEN (#{pageNum} - 1) * #{amount} + 1 AND #{pageNum} * #{amount}
+]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		SELECT count(*) FROM qna_board
+		<include refid="criteria"></include>
+	</select>
+	
+	<update id="updateReplyCnt">
+		update qna_board set REPLYCNT = REPLYCNT + #{amount}
+		WHERE qnano = #{qnaNo}
+	</update>
+
+</mapper>
