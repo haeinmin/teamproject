@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.MemberListMapper">
+<sql id="criteria">
+		<where>
+				<choose>
+					<when test="type == 'T'.toString()">
+						title LIKE '%' || #{keyword} || '%'
+					</when>
+				</choose>
+		</where>
+	</sql>
+
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.MemberVO">
+<![CDATA[	
+	SELECT
+	 id, name,
+	 nickname, phone, email, regdate
+	FROM
+	 (
+	  SELECT 
+	   ROW_NUMBER() OVER (ORDER BY regdate DESC) rn,
+	  id, name,
+	 nickname, phone, email, regdate
+	  FROM
+	   member
+]]>
+<include refid="criteria"></include>
+
+<![CDATA[
+	 )
+	WHERE
+	 rn BETWEEN (#{pageNum} - 1) * #{amount} + 1 AND #{pageNum} * #{amount}
+]]>
+	</select>
+	
+	<select id="getList" resultType="org.zerock.domain.MemberVO">
+<![CDATA[
+select * from member]]>
+	</select>
+
+	<delete id="delete">
+		delete from member where id=#{id}
+	</delete>
+
+	<select id="getTotalCount" resultType="int">
+		SELECT count(*) FROM member
+		<include refid="criteria"></include>
+	</select>
+</mapper>

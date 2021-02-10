@@ -47,7 +47,7 @@ public class QnaServiceImpl implements QnaService{
 	@Override
 	public List<QnaVO> getList(Criteria cri) {
 		log.info("getList.........");
-		return mapper.getListWithPaging();
+		return mapper.getListWithPaging(cri);
 	}
 	
 	@Override

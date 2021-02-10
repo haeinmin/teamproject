@@ -92,3 +92,14 @@ add constraint nickname unique (nickname);
 
 alter table qna_board
 add (replycnt number);
+
+alter table qna_reply
+add replydate date;
+
+alter table review_reply
+add created_dt date;
+
+alter table member
+add regdate date;
+
+CREATE TABLE COUPON (COUPONNO number(10), memberId number(10), couponname varchar(20));

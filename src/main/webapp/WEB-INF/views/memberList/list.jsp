@@ -38,18 +38,33 @@
 			actionForm.find("[name='pageNum']").val($(this).attr('href'));
 			actionForm.submit();
 		});
+		
+		var myForm = $("#my-form");
+	      $("#delete-member").click(function() {
+	        var checkedInput = $(".check > input[type='checkbox']:checked");
+	        checkedInput.each(function(idx, elem) {
+	          var memberId = $(elem).closest("tr").find(".memberId");
+
+	          var newInput = $("<input />");
+	          newInput.attr("name", "id");
+	          newInput.attr("value", memberId.text());
+	          myForm.append(newInput);
+	        });
+	        submit();
+	        $("#compl-modal").modal("show");
+	      });
 	});
-
-
 </script>
 <link rel="stylesheet" href="${root }/resources/assets/css/reset.css">
 <link rel="stylesheet" href="${root }/resources/assets/css/style.css">
 <link rel="stylesheet" href="${root }/resources/assets/css/common.css">
+
 <style>
 li.page-item {
 	font-size: 1rem;
 }
 </style>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -59,56 +74,43 @@ li.page-item {
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>#번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
+						<th></th>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>닉네임</th>
+						<th>휴대폰 번호</th>
+						<th>이메일</th>
+						<th>가입일</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${list}" var="qna">
+					<c:forEach items="${list}" var="member">
 						<tr>
-							<td>${qna.qnaNo}</td>
-							<td><c:url value="/qna/get" var="qnaLink">
-									<c:param value="${qna.qnaNo }" name="qnaNo" />
-									<c:param value="${pageMaker.cri.pageNum }" name="pageNum" />
-									<c:param value="${pageMaker.cri.amount }" name="amount" />
-								</c:url> <a href="${qnaLink }"><c:out value="${qna.qnaTitle}" />
-										<c:if test="${qna.replyCnt gt 0 }">
-											<span class="badge badge-info">${qna.replyCnt }</span>
-										</c:if>
-									</a></td>
-							<td><c:out value="${qna.nickname}"></c:out></td>
+							<td><input type="checkbox"><span class="checkmark"></span></td>
+							<td class="memberId"><c:out value="${member.id}" /></td>
+							<td><c:out value="${member.name}" /></td>
+							<td><c:out value="${member.nickname}"></c:out></td>
+							<td><c:out value="${member.phone}"></c:out></td>
+							<td><c:out value="${member.email}"></c:out></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${qna.qnaDate}"></fmt:formatDate></td>
+									value="${member.regDate}"></fmt:formatDate></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 	</div>
-	<div class="modal" tabindex="-1" id="myModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">알림</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>처리가 완료되었습니다.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
-				</div>
-			</div>
-		</div>
+	<div class="container-sm mb-3">
+		<p align="right">
+			<button class="btn btn-danger" id="delete-member">선택한 회원 삭제</button>
+		</p>
 	</div>
+	<form action="${root}/memberList/delete" method="post" hidden id="my-form">
+	
+	</form>
 	<div class="container-sm mt-3">
 		<div class="row justify-content-center">
+
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
 
@@ -128,7 +130,7 @@ li.page-item {
 						<c:url value="/qna/list" var="pageLink">
 							<c:param name="pageNum" value="${num }" />
 							<c:param value="${pageMaker.cri.amount }" name="amount" />
-						
+
 						</c:url>
 						<li
 							class="page-item ${pageMaker.cri.pageNum eq num ? 'active' : '' }">
@@ -154,11 +156,33 @@ li.page-item {
 	<div class="d-none">
 		<form id="actionForm" action="${root }/qna/list">
 			<input name="pageNum" value="${pageMaker.cri.pageNum }" /> <input
-				name="amount" value="${pageMaker.cri.amount }" />
-				<input name="type" value="${pageMaker.cri.type }" />
-				<input name="keyword" value="${pageMaker.cri.keyword }" /> <input
-				type="submit" />
+				name="amount" value="${pageMaker.cri.amount }" /> <input
+				name="type" value="${pageMaker.cri.type }" /> <input name="keyword"
+				value="${pageMaker.cri.keyword }" /> <input type="submit" />
 		</form>
+	</div>
+	<div class="modal fade" id="compl-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">완료</h5>
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input
+							type="text" class="form-control" id="reply-input" readonly value="삭제가 완료되었습니다.">
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
 	</div>
 	<u:footer />
 </body>

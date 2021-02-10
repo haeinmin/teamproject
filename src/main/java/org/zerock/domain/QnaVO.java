@@ -12,4 +12,5 @@ public class QnaVO {
 	private Date qnaDate;
 	private String id;
 	private int replyCnt;
+	private String nickname;
 }

@@ -2,11 +2,14 @@ package org.zerock.service;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.QnaVO;
 import org.zerock.mapper.QnaMapperTests;
 
@@ -39,7 +42,12 @@ public class QnaServiceTests {
 	
 	@Test
 	public void testGetList() {
-		service.getList().forEach(qna -> log.info(qna));
+		Criteria cri = new Criteria(2,10);
+		List<QnaVO> list = service.getList(cri);
+		
+		assertNotNull(list);
+		assertNotEquals(list.size(), 0);
+		assertEquals(list.size(), 10);
 	}
 	
 	@Test
