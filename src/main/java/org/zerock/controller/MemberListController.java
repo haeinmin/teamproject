@@ -2,6 +2,8 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVO;
@@ -36,8 +39,16 @@ public class MemberListController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam("id") String id, Criteria cri, RedirectAttributes rttr) {
-		log.info("delete...... " + id);
+	@ResponseBody
+	public String delete(@RequestParam("id") String[] ids) {
+		log.info("delete...... " + ids);
+		
+		for (String id : ids) {
+			service.delete(id);
+		}
+		
+		return "success123";
+		/*
 		if (service.delete(id)) {
 			rttr.addFlashAttribute("result", "success");
 		}
@@ -46,5 +57,34 @@ public class MemberListController {
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/memberList/list";
+		*/
 	}
+	/*
+	@PostMapping() 
+	public void login(String id, String pw, HttpSession session) {
+		//login....
+		// get user by id -> service.getUser(id)
+		// if pw.equals(user.pw)
+		//    then sucess
+		//    else fail
+		
+		// sql - select * from member where id = #{id}
+		
+		session.setattribute('authUser', user);
+		
+		else 
+			
+			
+	}
+	
+	@GetMapping()
+	public void onlyAuth(HttpSession session) {
+		Object o = session.getAttribute("authUser");
+		if (o == nul) {
+			
+		} else {
+			
+		}
+	}
+	*/
 }

@@ -1,0 +1,241 @@
+
+
+* {
+    box-sizing: border-box;
+}
+
+section {
+    display: block;
+}
+
+body {
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.search-full input[type="search"] {
+    border: 1px solid #fff;
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+.hero {
+    background-image: url(//theme.zdassets.com/theme_assets/10313248/bbf7aaa….png);
+    background-position: center;
+    background-size: cover;
+    height: 250px;
+    padding: 0 30px;
+    text-align: center;
+    width: 100%;
+}
+
+div {
+    display: block;
+}
+
+.hero-inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 610px;
+    margin: 0 auto;
+}
+
+.intro-title {
+    margin-bottom: 36px;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 22px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.search-icon {
+    position: relative;
+    bottom: 5%;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 15px;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    color: #777;
+}
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+path[Attributes Style] {
+    stroke: currentcolor;
+    stroke-linecap: round;
+    d: path("M 11 11 L 7.5 7.5");
+}
+user agent stylesheet
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+input:not([type="checkbox"]) {
+    outline: none;
+}
+input {
+    font-weight: 300;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: border .12s ease-in-out;
+}
+
+input, textarea {
+    color: #000;
+    font-size: 14px;
+}
+
+
+
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+input[type="hidden" i] {
+    display: none;
+    appearance: initial;
+    background-color: initial;
+    cursor: default;
+    padding: initial;
+    border: initial;
+}
+user agent stylesheet
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}
+
+.search input[type="search"] {
+    padding: 0 55px !important;
+    height: 48px;
+    border: none !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px 0 rgba(52, 58, 64, 0.15), 0 0 1px 0 rgba(52, 58, 64, 0.2);
+    font-size: 15px !important;
+    font-weight: inherit;
+    width: 100%;
+}
+
+input:not([type="checkbox"]) {
+    outline: none;
+}
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+input {
+    font-weight: 300;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: border .12s ease-in-out;
+}
+input, textarea {
+    color: #000;
+    font-size: 14px;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+input[type="search" i] {
+    appearance: searchfield;
+    box-sizing: border-box;
+    padding: 1px 2px;
+}
+user agent stylesheet
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: textfield;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 2px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+}

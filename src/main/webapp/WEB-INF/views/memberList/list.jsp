@@ -41,7 +41,8 @@
 		
 		var myForm = $("#my-form");
 	      $("#delete-member").click(function() {
-	        var checkedInput = $(".check > input[type='checkbox']:checked");
+	        var checkedInput = $(".check-td > input[type='checkbox']:checked");
+          	myForm.empty();
 	        checkedInput.each(function(idx, elem) {
 	          var memberId = $(elem).closest("tr").find(".memberId");
 
@@ -50,8 +51,20 @@
 	          newInput.attr("value", memberId.text());
 	          myForm.append(newInput);
 	        });
-	        submit();
-	        $("#compl-modal").modal("show");
+	        //console.log(myForm.serialize());
+	        
+	        $.ajax('${root}/memberList/delete', {
+	        	method: 'post',
+	        	data: myForm.serialize()
+	        }).done(function() {
+	        	$("#compl-modal").modal("show");
+	        }).fail(function() {
+	        	// ...
+	        	console.log("fail");
+	        });
+	        
+	        //myForm.submit();
+	        //$("#compl-modal").modal("show");
 	      });
 	});
 </script>
@@ -86,7 +99,7 @@ li.page-item {
 				<tbody>
 					<c:forEach items="${list}" var="member">
 						<tr>
-							<td><input type="checkbox"><span class="checkmark"></span></td>
+							<td class="check-td"><input type="checkbox"><span class="checkmark"></span></td>
 							<td class="memberId"><c:out value="${member.id}" /></td>
 							<td><c:out value="${member.name}" /></td>
 							<td><c:out value="${member.nickname}"></c:out></td>
@@ -165,21 +178,19 @@ li.page-item {
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">완료</h5>
+					<h5 class="modal-title">회원 삭제 완료</h5>
 					<button type="button" class="close" data-dismiss="modal">
 						<span>&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="form-group">
-						<input
-							type="text" class="form-control" id="reply-input" readonly value="삭제가 완료되었습니다.">
-					</div>
+					<p> 삭제가 완료되었습니다. </p>
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">닫기</button>
+				<!-- 	<!-- <button type="button" class="btn btn-secondary"
+						data-dismiss="modal">닫기</button> -->
+						<a href="">닫기</a>
 				</div>
 			</div>
 		</div>

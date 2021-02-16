@@ -9,10 +9,10 @@
 			<foreach item="type" collection="typeArr" separator="OR">
 				<choose>
 					<when test="type == 'T'.toString()">
-						title LIKE '%' || #{keyword} || '%'
+						qnaTitle LIKE '%' || #{keyword} || '%'
 					</when>
 					<when test="type == 'C'.toString()">
-						content LIKE '%' || #{keyword} || '%'
+						qnaContent LIKE '%' || #{keyword} || '%'
 					</when>
 					<when test="type == 'W'.toString()">
 						writer LIKE '%' || #{keyword} || '%'
@@ -27,12 +27,12 @@
 <![CDATA[	
 	SELECT
 	 qnaNo, qnaTitle, qnaContent,
-	 id, qnaDate, replycnt, nickname
+	 id, qnaDate, replycnt, nickname, pin
 	FROM
 	 (
 	  SELECT 
 	   ROW_NUMBER() OVER (ORDER BY qnaNo DESC) rn,
-	   qnaNo, qnaTitle, qnaContent, b.id, qnaDate, replycnt, m.nickname
+	   qnaNo, qnaTitle, qnaContent, b.id, qnaDate, replycnt, m.nickname, pin
 	  FROM
 	   qna_board b join member m on b.id = m.id
 ]]>
@@ -54,9 +54,9 @@ where b.id = m.id order by qnaNo desc]]>
 
 	<insert id="insert">
 		insert into qna_board (qnaNo, qnatitle, qnacontent,
-		id, qnadate)
+		id, qnadate, pin)
 		values (qna_sequence.nextval, #{qnaTitle}, #{qnaContent},
-		#{id}, sysdate)
+		#{id}, sysdate, #{pin})
 	</insert>
 
 	<insert id="insertSelectKey">
@@ -64,9 +64,9 @@ where b.id = m.id order by qnaNo desc]]>
 			resultType="int">
 			select qna_sequence.nextval from dual
 		</selectKey>
-		insert into qna_board (qnaNo, qnatitle, qnacontent, id, qnadate)
+		insert into qna_board (qnaNo, qnatitle, qnacontent, id, qnadate, pin)
 		values (#{qnaNo}, #{qnaTitle}, #{qnaContent}, #{id},
-		sysdate)
+		sysdate, #{pin})
 	</insert>
 
 	<select id="read" resultType="org.zerock.domain.QnaVO">
@@ -85,7 +85,7 @@ where b.id = m.id order by qnaNo desc]]>
 		set qnaTitle=#{qnaTitle},
 		qnaContent =
 		#{qnaContent},
-		id = #{id}
+		id = #{id}, pin=#{pin}
 		where qnaNo = #{qnaNo}
 	</update>
 

@@ -13,4 +13,5 @@ public class QnaVO {
 	private String id;
 	private int replyCnt;
 	private String nickname;
+	private int pin;
 }

@@ -35,6 +35,11 @@
 			<div class="col-12 col-lg-6 offset-lg-3">
 				<!--  <form action="${pageContext.request.contextPath }/board/register">  경로가 같은 경우 action생략해도 됨  -->
 				<form method="post">
+					<!-- 관리자일 시@@@@@@@@@@@@@@@ -->
+					<div class="form-group">
+						<input type="checkbox" name="pin" class="form-control"> 공지사항으로 등록
+					</div>
+					
 					<div class="form-group">
 						<label for="input1">Title</label> <input type="text" name="qnaTitle"
 							class="form-control" id="input1" placeholder="제목을 입력하세요">
@@ -45,12 +50,21 @@
 						<textarea class="form-control" id="textarea1" rows="3"
 							name="qnaContent"></textarea>
 					</div>
-
+					
+					<div class="form-group">
+						<label for="textarea1">Content</label>
+						<textarea class="form-control" id="textarea1" rows="3"
+							name="qnaContent"></textarea>
+					</div>
+					
+					<!-- 로그인 시 아이디로 가져올 것@@@@@@@@@@@@@@@  -->
 					<div class="form-group">
 						<label for="input2">Writer</label> <input name="writer"
 							type="text" class="form-control" id="input2"
 							placeholder="이름을 입력하세요">
 					</div>
+					
+					
 
 					<button type="submit" class="btn btn-primary">Submit</button>
 
