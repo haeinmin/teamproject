@@ -46,16 +46,22 @@
 <link rel="stylesheet" href="${root }/resources/assets/css/qna.css">
 <style>
 li.page-item {
-	font-size: 1rem;
+	font-size: 1.2rem;
 }
 #inlineFormCustomSelectPref {
-	font-weight: 300;
-    max-width: 70%;
-    box-sizing: border-box;
-    transition: border .12s ease-in-out;
-    color: #000;
-    font-size: 14px;
+	padding: 0 55px !important;
+    height: 48px;
+    border: none !important;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px 0 rgba(52, 58, 64, 0.15), 0 0 1px 0 rgba(52, 58, 64, 0.2);
+    font-size: 13px !important;
+    font-weight: inherit;
+    width: 30%;
 }
+
+#write-button {
+font-size: 13px;}
 
 </style>
 <title>Insert title here</title>
@@ -86,11 +92,11 @@ li.page-item {
 							   <option value="T" ${pageMaker.cri.type eq 'T' ? 'selected' : '' }>제목</option>
 	    <option value="C" ${pageMaker.cri.type eq 'C' ? 'selected' : '' }>내용</option>
 	    <option value="W" ${pageMaker.cri.type eq 'W' ? 'selected' : '' }>작성자</option>
-	    <option value="TC" ${pageMaker.cri.type eq 'TC' ? 'selected' : '' }>제목 or 내용</option>
+	    <%-- <option value="TC" ${pageMaker.cri.type eq 'TC' ? 'selected' : '' }>제목 or 내용</option>
 	    <option value="TW" ${pageMaker.cri.type eq 'TW' ? 'selected' : '' }>제목 or 작성자</option>
-	    <option value="TWC" ${pageMaker.cri.type eq 'TWC' ? 'selected' : '' }>제목 or 내용 or 작성자</option>
+	    <option value="TWC" ${pageMaker.cri.type eq 'TWC' ? 'selected' : '' }>제목 or 내용 or 작성자</option> --%>
 	  </select>
-      <input name="keyword" required value="${pageMaker.cri.keyword }" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <input name="keyword" required value="${pageMaker.cri.keyword }" class="form-control mr-sm-2" type="search" placeholder="여기에 검색어를 넣으세요..." aria-label="여기에 검색어를 넣으세요...">
       <input type="hidden" name="pageNum" value="1" />
       <input type="hidden" name="amount" value="${pageMaker.cri.amount }" />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>

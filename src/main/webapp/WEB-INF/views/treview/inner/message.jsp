@@ -8,12 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>여행후기 게시판</title>
-<script src="/resources/treview/assets/js/jquery.js"></script>
+<script src="${root}/resources/treview/assets/js/jquery.js"></script>
 </head>
 <body>
 	<script>
 		alert("${params.message}");
-		$(parent.document).find("#treviewURL").val("${params.redirect}");
+		$(parent.document).find("#treviewURL").val("${root}${params.redirect}");
 		parent.fn_moveTreviewURL();
 		//location.href = "${params.redirect}";
 	</script>

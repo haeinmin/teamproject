@@ -15,7 +15,7 @@
 						qnaContent LIKE '%' || #{keyword} || '%'
 					</when>
 					<when test="type == 'W'.toString()">
-						writer LIKE '%' || #{keyword} || '%'
+						nickname LIKE '%' || #{keyword} || '%'
 					</when>
 				</choose>
 			</foreach>
