@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="u" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,18 +19,14 @@
 	$(document).ready(function() {
 		var result = '${result}';
 		var message = '${message}';
-
 		checkModal2(message);
-
 		history.replaceState({}, null, null);
-
 		function checkModal2(message) {
 			if (message && history.state == null) {
 				$("#myModal .modal-body p").html(message);
 				$("#myModal").modal("show");
 			}
 		}
-
 		var actionForm = $("#actionForm");
 		$(".pagination a").click(function(e) {
 			e.preventDefault();
@@ -41,57 +36,35 @@
 		
 		var myForm = $("#my-form");
 	      $("#delete-member").click(function() {
-	        var checkedInput = $(".check-td > input[type='checkbox']:checked");
-          	myForm.empty();
+	        var checkedInput = $(".check > input[type='checkbox']:checked");
 	        checkedInput.each(function(idx, elem) {
 	          var memberId = $(elem).closest("tr").find(".memberId");
-
 	          var newInput = $("<input />");
 	          newInput.attr("name", "id");
 	          newInput.attr("value", memberId.text());
 	          myForm.append(newInput);
 	        });
-	        //console.log(myForm.serialize());
-	        
-	        $.ajax('${root}/memberList/delete', {
-	        	method: 'post',
-	        	data: myForm.serialize()
-	        }).done(function() {
-	        	$("#compl-modal").modal("show");
-	        }).fail(function() {
-	        	// ...
-	        	console.log("fail");
-	        });
-	        
-	        //myForm.submit();
-	        //$("#compl-modal").modal("show");
+	        submit();
+	        $("#compl-modal").modal("show");
 	      });
 	});
 </script>
 <link rel="stylesheet" href="${root }/resources/assets/css/reset.css">
 <link rel="stylesheet" href="${root }/resources/assets/css/style.css">
 <link rel="stylesheet" href="${root }/resources/assets/css/common.css">
-<link rel="stylesheet" href="${root }/resources/assets/css/qna.css">
 
 <style>
 li.page-item {
-	font-size: 1.2rem;
-	margin-bottom: 7em;
-}
-
-#delete-member {
-font-size: 13px;
+	font-size: 1rem;
 }
 </style>
 
-<title>My fake trip</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<u:navbar></u:navbar>
 	<div class="container-sm">
 		<div class="row">
-		
-			<h2 class="intro-title">전체 회원 목록</h2>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -107,7 +80,7 @@ font-size: 13px;
 				<tbody>
 					<c:forEach items="${list}" var="member">
 						<tr>
-							<td class="check-td"><input type="checkbox"><span class="checkmark"></span></td>
+							<td><input type="checkbox"><span class="checkmark"></span></td>
 							<td class="memberId"><c:out value="${member.id}" /></td>
 							<td><c:out value="${member.name}" /></td>
 							<td><c:out value="${member.nickname}"></c:out></td>
@@ -136,7 +109,7 @@ font-size: 13px;
 				<ul class="pagination">
 
 					<c:if test="${pageMaker.prev }">
-						<c:url value="/memberList/list" var="prevLink">
+						<c:url value="/qna/list" var="prevLink">
 							<c:param value="${pageMaker.startPage -1 }" name="pageNum" />
 							<c:param value="${pageMaker.cri.amount }" name="amount" />
 						</c:url>
@@ -148,7 +121,7 @@ font-size: 13px;
 
 					<c:forEach var="num" begin="${pageMaker.startPage }"
 						end="${pageMaker.endPage }">
-						<c:url value="/memberList/list" var="pageLink">
+						<c:url value="/qna/list" var="pageLink">
 							<c:param name="pageNum" value="${num }" />
 							<c:param value="${pageMaker.cri.amount }" name="amount" />
 
@@ -161,7 +134,7 @@ font-size: 13px;
 					</c:forEach>
 
 					<c:if test="${pageMaker.next }">
-						<c:url value="/memberList/list" var="nextLink">
+						<c:url value="/qna/list" var="nextLink">
 							<c:param value="${pageMaker.endPage+1 }" name="pageNum" />
 							<c:param value="${pageMaker.cri.amount }" name="amount" />
 						</c:url>
@@ -175,7 +148,7 @@ font-size: 13px;
 		</div>
 	</div>
 	<div class="d-none">
-		<form id="actionForm" action="${root }/memberList/list">
+		<form id="actionForm" action="${root }/qna/list">
 			<input name="pageNum" value="${pageMaker.cri.pageNum }" /> <input
 				name="amount" value="${pageMaker.cri.amount }" /> <input
 				name="type" value="${pageMaker.cri.type }" /> <input name="keyword"
@@ -186,19 +159,21 @@ font-size: 13px;
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">회원 삭제 완료</h5>
+					<h5 class="modal-title">완료</h5>
 					<button type="button" class="close" data-dismiss="modal">
 						<span>&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<p> 삭제가 완료되었습니다. </p>
+					<div class="form-group">
+						<input
+							type="text" class="form-control" id="reply-input" readonly value="삭제가 완료되었습니다.">
+					</div>
 				</div>
 
 				<div class="modal-footer">
-				<!-- 	<!-- <button type="button" class="btn btn-secondary"
-						data-dismiss="modal">닫기</button> -->
-						<a href="">닫기</a>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>

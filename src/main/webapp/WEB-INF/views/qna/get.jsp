@@ -121,7 +121,47 @@
 <link rel="stylesheet" href="${root }/resources/assets/css/reset.css">
 <link rel="stylesheet" href="${root }/resources/assets/css/style.css">
 <link rel="stylesheet" href="${root }/resources/assets/css/common.css">
-<title>Insert title here</title>
+<link rel="stylesheet" href="${root }/resources/assets/css/qna.css">
+<style>
+#input1, #input2, #input3{
+	height: 3em;
+	padding: 10px;
+	font-size: 13px;
+}
+
+#textarea1 {
+	height: 20em;
+	padding: 10px;
+	font-size: 13px;
+}
+
+#modify-button {
+margin-top: 1.3em;
+margin-bottom: 1em;
+font-size: 14px;
+padding-right: 13px;
+padding-left: 13px;}
+
+.card {
+	height: 20em;
+	font-size: 13px;
+	margin-bottom: 6em;
+}
+
+#new-reply-button {
+font-size: 13px;
+padding-right: 13px;
+padding-left: 13px;}
+}
+
+.ml-auto {
+  margin-left:auto;
+}
+
+
+</style>
+<title>My fake trip</title>
+
 </head>
 <body>
 	<u:navbar></u:navbar>
@@ -129,29 +169,29 @@
 		<div class="row">
 			<div class="col-12 col-lg-6 offset-lg-3">
 				<!-- responsive web design according to the size of the window -->
-				<h1>게시물 보기</h1>
+				<h2 class="intro-title">문의 내용</h2>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-lg-6 offset-lg-3">
 				<div class="form-group">
 					<label for="input3">번호</label> <input class="form-control"
-						type="text" readonly value="${qna.qnaNo }" />
+						type="text" id="input3" readonly value="${qna.qnaNo }" />
 				</div>
 				<div class="form-group">
-					<label for="input1">Title</label> <input readonly
+					<label for="input1">제목</label> <input readonly
 						value='<c:out value="${qna.qnaTitle }" />' type="text"
 						class="form-control" id="input1">
 				</div>
 
 				<div class="form-group">
-					<label for="textarea1">Content</label>
+					<label for="textarea1">내용</label>
 					<textarea readonly class="form-control" id="textarea1" rows="3"><c:out
 							value="${qna.qnaContent }" /></textarea>
 				</div>
 
 				<div class="form-group">
-					<label for="input2">Writer</label> <input readonly
+					<label for="input2">작성자</label> <input readonly
 						value='<c:out value="${qna.nickname }" />' type="text"
 						class="form-control" id="input2">
 				</div>
@@ -160,7 +200,11 @@
 					<c:param name="pageNum" value="${cri.pageNum }"></c:param>
 					<c:param name="amount" value="${cri.amount }"></c:param>
 				</c:url>
-				<a href="${modifyLink }" class="btn btn-secondary"> 수정 </a>
+				<p align="right">
+				<u:isWriter writer="${qna.nickname }">
+				<a href="${modifyLink }" class="btn btn-secondary ml-auto" id="modify-button"> 수정 </a>
+				</u:isWriter>	
+				</p>
 			</div>
 		</div>
 	</div>
@@ -169,7 +213,7 @@
 			<div class="col-12 col-sm-6 offset-sm-3">
 				<div class="card">
 					<div class="card-header d-flex justify-content-between">
-						<span> 댓글 목록 </span>
+						<span class="reply-list">  </span>
 
 						<button class="btn btn-info" id="new-reply-button">댓글 쓰기</button>
 					</div>

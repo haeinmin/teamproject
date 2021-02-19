@@ -31,6 +31,7 @@ public class QnaController {
 		int total = service.getTotal(cri);
 		PageDTO dto = new PageDTO(cri, total);
 		
+		
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", dto);
 	}
@@ -41,7 +42,7 @@ public class QnaController {
 	}
 	
 	@PostMapping("/register")
-	public String register(QnaVO qna, RedirectAttributes rttr) {
+	public String register(QnaVO qna,String pin, RedirectAttributes rttr) {
 		log.info("register: " + qna);
 		service.register(qna);
 		rttr.addFlashAttribute("result", qna.getQnaNo());
@@ -72,6 +73,7 @@ public class QnaController {
 		log.info("delete...... " + qnaNo);
 		if (service.delete(qnaNo)) {
 			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("message", qnaNo + "번 글이 삭제되었습니다.");
 		}
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());

@@ -105,3 +105,6 @@ add regdate date;
 alter table qna_board add pin number default 0 not null;
 
 CREATE TABLE COUPON (COUPONNO number(10), memberId number(10), couponname varchar(20));
+
+alter table qna_reply
+drop constraint SYS_C0021549;

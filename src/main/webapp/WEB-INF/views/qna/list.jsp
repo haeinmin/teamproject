@@ -64,7 +64,7 @@ li.page-item {
 font-size: 13px;}
 
 </style>
-<title>Insert title here</title>
+<title>My fake trip</title>
 </head>
 <body>
 	<u:navbar></u:navbar>
