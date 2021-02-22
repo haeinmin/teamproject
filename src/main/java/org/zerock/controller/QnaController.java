@@ -15,6 +15,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.QnaVO;
+import org.zerock.domain.User;
 import org.zerock.service.QnaService;
 
 import lombok.AllArgsConstructor;
@@ -48,22 +49,14 @@ public class QnaController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@SessionAttribute("authUser") MemberVO member, QnaVO qna, RedirectAttributes rttr) {
-		log.info("register: " + qna);
-		service.register(qna);
-		rttr.addFlashAttribute("result", qna.getQnaNo());
-		return "redirect:/qna/list";
+	public String register(QnaVO qna, RedirectAttributes rttr) {
+			log.info("register: " + qna);
+			service.register(qna);
+			rttr.addFlashAttribute("result", qna.getQnaNo());
+			return "redirect:/qna/list";
+		
 	}
 	
-	@RequestMapping("/write")
-	public String write(@SessionAttribute("authUser") User user) {
-		
-		if (user == null) {
-			return "redirect:/test1/login";
-		} else {
-			return "write";
-		}
-	}
 	
 	@GetMapping({"/get", "/modify"})
 	public void get(int qnaNo, @ModelAttribute("cri") Criteria cri, Model model) {

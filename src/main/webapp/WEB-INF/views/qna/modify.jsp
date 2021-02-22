@@ -94,7 +94,7 @@
 					<div class="form-group">
 						<label for="input2">작성자</label> <input readonly name="id"
 							type="text" class="form-control" id="input2"
-							value='<c:out value="${qna.id }" />'>
+							value='<c:out value="${qna.nickname }" />'>
 					</div>
 					<input hidden value="${cri.pageNum }" name="pageNum" /> <input
 						hidden value="${cri.amount }" name="amount" />

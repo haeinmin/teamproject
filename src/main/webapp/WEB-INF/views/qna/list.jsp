@@ -20,6 +20,7 @@
 	$(document).ready(function() {
 		var result = '${result}';
 		var message = '${message}';
+		var noAuthUser = $("#noAuthUser-modal")
 
 		checkModal2(message);
 
@@ -38,6 +39,14 @@
 			actionForm.find("[name='pageNum']").val($(this).attr('href'));
 			actionForm.submit();
 		});
+		
+		$("#write-button").click(function() {
+			if ("${authUser.id}"=='') {
+				noAuthUser.modal('show');
+				e.preventDefault();
+			}
+		});
+		
 	});
 </script>
 <link rel="stylesheet" href="${root }/resources/assets/css/reset.css">
@@ -150,8 +159,8 @@ margin-left:3px;}
 			</table>
 			
 			<button id="write-button" type="button"
-				class="btn btn-primary ml-auto mt-4"
-				onclick="location.href =  '${root }/qna/register';">문의 작성하기</button>
+				class="btn btn-primary ml-auto mt-4" <u:isLogin>
+				onclick="location.href =  '${root }/qna/register';"</u:isLogin>>문의 작성하기</button>
 
 
 		</div>
@@ -229,6 +238,27 @@ margin-left:3px;}
 				value="${pageMaker.cri.keyword }" /> <input type="submit" />
 		</form>
 	</div>
+	
+	<div id="noAuthUser-modal" class="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">알림</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>로그인 시 작성 가능합니다.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<br>
 	<br>
 	<u:footer />
