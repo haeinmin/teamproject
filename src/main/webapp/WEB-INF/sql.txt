@@ -108,3 +108,34 @@ CREATE TABLE COUPON (COUPONNO number(10), memberId number(10), couponname varcha
 
 alter table qna_reply
 drop constraint SYS_C0021549;
+
+alter table cart add cartdate date;
+
+CREATE TABLE country(
+    id NUMBER GENERATED AS IDENTITY,
+    continent VARCHAR2(20),
+    large_country VARCHAR2(30),
+    small_country VARCHAR2(30),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE categories(
+  id NUMBER GENERATED AS IDENTITY,
+  name VARCHAR2(255) unique,
+  photourl varchar2(255),
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE promotions(
+    id NUMBER GENERATED AS IDENTITY,
+    title VARCHAR2(255),
+    body Long,
+    countryid NUMBER,
+    categoriesid number,
+    createdate date,
+    price VARCHAR2(255),
+    likes NUMBER DEFAULT 0,
+    scores NUMBER DEFAULT 0,
+    photourl VARCHAR2(255),
+    PRIMARY KEY (id)
+    );

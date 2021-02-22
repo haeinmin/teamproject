@@ -54,4 +54,9 @@ public class QnaServiceImpl implements QnaService{
 	public int getTotal(Criteria cri) {
 		return mapper.getTotalCount(cri);
 	}
+	
+	@Override
+	public List<QnaVO> getPinList() {
+		return mapper.getPinList();
+	}
 }

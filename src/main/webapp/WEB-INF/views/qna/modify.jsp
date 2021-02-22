@@ -67,6 +67,13 @@
 			<div class="col-12 col-lg-6 offset-lg-3">
 				<!--  <form action="${pageContext.request.contextPath }/board/register">  경로가 같은 경우 action생략해도 됨  -->
 				<form id="modify-form" method="post" action="${root}/qna/modify">
+					<u:isAdmin>
+					<div class="wrap">
+						<input id="agree" type="checkbox" name="pin" value="1"> <label
+							for="agree"> <span>공지사항으로 등록하기</span>
+						</label>
+					</div>
+					</u:isAdmin>
 					<div class="form-group">
 						<label for="input3">번호</label> <input class="form-control"
 							name="qnaNo" type="text" readonly value="${qna.qnaNo }"

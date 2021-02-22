@@ -58,12 +58,13 @@ padding-left: 13px;}
 				<!--  <form action="${pageContext.request.contextPath }/board/register">  경로가 같은 경우 action생략해도 됨  -->
 				<form method="post">
 					
-					<!-- 관리자일 시@@@@@@@@@@@@@@@ -->
+					<u:isAdmin>
 					<div class="wrap">
-						<input id="agree" type="checkbox" name="pin"> <label
+						<input id="agree" type="checkbox" name="pin" value="1"> <label
 							for="agree"> <span>공지사항으로 등록하기</span>
 						</label>
 					</div>
+					</u:isAdmin>
 
 					<div class="form-group mt-3 mb-3">
 						<label for="input1">제목</label> <input type="text" name="qnaTitle"
@@ -76,11 +77,12 @@ padding-left: 13px;}
 							name="qnaContent"></textarea>
 					</div>
 
-					<!-- 로그인 시 아이디로 가져올 것@@@@@@@@@@@@@@@이클립스 참고   -->
+					
 					<div class="form-group mt-3 mb-3">
 						<label for="input2">작성자</label> <input name="writer" type="text"
 							value="${authUser.nickname }" readonly class="form-control" id="input2" placeholder="이름을 입력하세요">
 					</div>
+					<input type="hidden" name="id" value="${authUser.id }">
 					<p align="right">
 					<button type="submit" class="btn btn-primary mr-0" id="write-button">등록하기</button></p>
 
@@ -91,5 +93,6 @@ padding-left: 13px;}
 		</div>
 	</div>
 	<u:footer />
+	
 </body>
 </html>

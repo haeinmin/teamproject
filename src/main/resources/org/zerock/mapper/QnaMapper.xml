@@ -35,6 +35,7 @@
 	   qnaNo, qnaTitle, qnaContent, b.id, qnaDate, replycnt, m.nickname, pin
 	  FROM
 	   qna_board b join member m on b.id = m.id
+	   and b.pin = 0
 ]]>
 		<include refid="criteria"></include>
 
@@ -49,9 +50,20 @@
 <![CDATA[
 select b.*, m.nickname
 from qna_board b, member m
-where b.id = m.id order by qnaNo desc]]>
+where b.id = m.id
+and b.pin = 0
+ order by qnaNo desc]]>
 	</select>
+	
 
+<select id="getPinList" resultType="org.zerock.domain.QnaVO">
+<![CDATA[
+select b.*, m.nickname
+from qna_board b, member m
+where b.id = m.id
+and b.pin = 1
+ order by qnaNo desc]]>
+</select>
 	<insert id="insert">
 		insert into qna_board (qnaNo, qnatitle, qnacontent,
 		id, qnadate, pin)

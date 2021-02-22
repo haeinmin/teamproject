@@ -63,6 +63,10 @@ li.page-item {
 #write-button {
 font-size: 13px;}
 
+.btn-outline-success {
+width: 10%;
+height:35px;
+margin-left:3px;}
 </style>
 <title>My fake trip</title>
 </head>
@@ -113,6 +117,19 @@ font-size: 13px;}
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach items="${pinList}" var="pin">
+						<tr class="table-warning">
+							<td>[공지]</td>
+							<td><c:url value="/qna/get" var="qnaLink">
+									<c:param value="${pin.qnaNo }" name="qnaNo" />
+									<c:param value="${pageMaker.cri.pageNum }" name="pageNum" />
+									<c:param value="${pageMaker.cri.amount }" name="amount" />
+								</c:url> <a href="${qnaLink }"><c:out value="${pin.qnaTitle}" />  </a></td>
+							<td><c:out value="${pin.nickname}"></c:out></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+									value="${pin.qnaDate}"></fmt:formatDate></td>
+						</tr>
+					</c:forEach>
 					<c:forEach items="${list}" var="qna">
 						<tr>
 							<td>${qna.qnaNo}</td>

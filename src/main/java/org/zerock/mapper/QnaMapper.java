@@ -26,4 +26,6 @@ public interface QnaMapper {
 	public int update(QnaVO qna);
 	
 	public void updateReplyCnt(@Param("qnaNo") int qnaNo, @Param("amount") int amount);
+
+	public List<QnaVO> getPinList();
 }

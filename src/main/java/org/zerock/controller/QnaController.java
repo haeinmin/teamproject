@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.QnaVO;
 import org.zerock.service.QnaService;
@@ -31,7 +33,11 @@ public class QnaController {
 		int total = service.getTotal(cri);
 		PageDTO dto = new PageDTO(cri, total);
 		
+//		List<QnaPinVO> pinList = pinSvc.getList();
 		
+		List<QnaVO> pinList = service.getPinList();
+		
+		model.addAttribute("pinList", pinList);
 		model.addAttribute("list", list);
 		model.addAttribute("pageMaker", dto);
 	}
@@ -42,11 +48,21 @@ public class QnaController {
 	}
 	
 	@PostMapping("/register")
-	public String register(QnaVO qna,String pin, RedirectAttributes rttr) {
+	public String register(@SessionAttribute("authUser") MemberVO member, QnaVO qna, RedirectAttributes rttr) {
 		log.info("register: " + qna);
 		service.register(qna);
 		rttr.addFlashAttribute("result", qna.getQnaNo());
 		return "redirect:/qna/list";
+	}
+	
+	@RequestMapping("/write")
+	public String write(@SessionAttribute("authUser") User user) {
+		
+		if (user == null) {
+			return "redirect:/test1/login";
+		} else {
+			return "write";
+		}
 	}
 	
 	@GetMapping({"/get", "/modify"})

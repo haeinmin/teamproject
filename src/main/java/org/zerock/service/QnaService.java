@@ -12,4 +12,5 @@ public interface QnaService {
 	public boolean delete(int qnaNo);
 	public List<QnaVO> getList(Criteria cri);
 	public int getTotal(Criteria cri);
+	public List<QnaVO> getPinList();
 }

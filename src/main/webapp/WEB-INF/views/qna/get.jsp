@@ -214,8 +214,9 @@ padding-left: 13px;}
 				<div class="card">
 					<div class="card-header d-flex justify-content-between">
 						<span class="reply-list">  </span>
-
+						<u:isAdmin>
 						<button class="btn btn-info" id="new-reply-button">댓글 쓰기</button>
+						</u:isAdmin>
 					</div>
 					<div class="card-body">
 						<ul class="list-unstyled" id="reply-ul">
