@@ -76,6 +76,10 @@ font-size: 13px;}
 width: 10%;
 height:35px;
 margin-left:3px;}
+
+#pinList {
+font-weight: 500;}
+
 </style>
 <title>My fake trip</title>
 </head>
@@ -116,7 +120,7 @@ margin-left:3px;}
 					</form>
 				</div>
 			</section>
-			<table class="table table-striped table-hover">
+			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>#번호</th>
@@ -127,7 +131,7 @@ margin-left:3px;}
 				</thead>
 				<tbody>
 					<c:forEach items="${pinList}" var="pin">
-						<tr class="table-warning">
+						<tr class="table-warning" id="pinList">
 							<td>[공지]</td>
 							<td><c:url value="/qna/get" var="qnaLink">
 									<c:param value="${pin.qnaNo }" name="qnaNo" />
@@ -138,6 +142,7 @@ margin-left:3px;}
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${pin.qnaDate}"></fmt:formatDate></td>
 						</tr>
+				
 					</c:forEach>
 					<c:forEach items="${list}" var="qna">
 						<tr>

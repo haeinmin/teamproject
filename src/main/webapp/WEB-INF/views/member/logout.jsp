@@ -2,8 +2,6 @@
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="m" tagdir="/WEB-INF/tags"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,27 +16,16 @@
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-
-
 <title>my fake trip</title>
 </head>
 <body>
+<script> alert("로그아웃 되었습니다."); self.location = "/myhome"; 
 
-
-	<u:navbar />
-
-
-	<div class="media">
-		<div class="media-body">
-			<h5 class="mt-0">WELCOME</h5>
-			회원 가입이 되었습니다.
-		</div>
-	</div>
-
-	<a href="${root }/member/login">
-		<button type="submit" class="btn btn-primary">로그인</button>
-	</a>
-
+</script>
 
 </body>
 </html>
+
+
+
+

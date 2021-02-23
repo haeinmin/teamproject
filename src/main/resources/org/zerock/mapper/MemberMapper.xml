@@ -31,7 +31,7 @@
 <update id="update">
 	update Member
 	set id= #{id},
-	password= #{password},
+	password= #{password},	
 	name= #{name},
 	nickname= #{nickname},
 	phone= #{phone},
@@ -49,7 +49,7 @@
 		   AND password = #{password}   
 	</select>	
 	
-	
+
 
 </mapper>
 

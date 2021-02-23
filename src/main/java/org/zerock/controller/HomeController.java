@@ -36,4 +36,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/coupon")
+	public String event() {
+	
+	return "/event/coupon";
+	}
+
 }

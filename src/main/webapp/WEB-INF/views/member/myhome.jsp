@@ -63,9 +63,7 @@ $(document).ready(function() {
 			}
 		}).done(function() {
 			console.log("삭제 완료");
-		//	$('#errorPw').show(); // 왜 삭제 완료에서 뜨는거야?????!!
-		//=> fail, done은 페이지 상태 (404, 405, 200 등)에 따라서 구분됨
-		//	컨트롤러에서 페이지 상태를 받아야함. 리턴타입 : ResponseEntity<String>
+		
 			$("#memberDeleteModal").modal('hide');
 			$("#memberDeleteSuccessModal").modal('show');
 			

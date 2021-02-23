@@ -1,5 +1,7 @@
 package org.zerock.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Service;
 import org.zerock.domain.MemberVO;
 import org.zerock.mapper.MemberMapper;
@@ -57,4 +59,15 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
+	@Override
+	public void sendEmail(MemberVO vo, String div) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void findPw(HttpServletResponse resp, MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }

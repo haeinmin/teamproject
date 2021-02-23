@@ -15,7 +15,6 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.QnaVO;
-import org.zerock.domain.User;
 import org.zerock.service.QnaService;
 
 import lombok.AllArgsConstructor;

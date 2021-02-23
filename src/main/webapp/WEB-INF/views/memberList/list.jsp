@@ -92,8 +92,8 @@ font-size: 13px;
 		<div class="row">
 		
 			<h2 class="intro-title">전체 회원 목록</h2>
-			<table class="table table-striped table-hover">
-				<thead>
+			<table class="table table-hover">
+				<thead class="thead-dark">
 					<tr>
 						<th></th>
 						<th>아이디</th>

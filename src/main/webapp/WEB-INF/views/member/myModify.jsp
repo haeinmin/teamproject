@@ -18,7 +18,7 @@
 
 
 
-<title>Insert title here</title>
+<title>my fake trip</title>
 </head>
 <body>
 

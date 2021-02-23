@@ -17,6 +17,7 @@
 
 <title>이벤트 페이지 home1</title>
 <script>
+var appRoot = '${root}';
 $(document).ready(function() {
 	var successModal = $("#success-modal");
 	var duplicatedModal = $("#duplicated-modal");
@@ -30,7 +31,7 @@ $(document).ready(function() {
 		
 			$.ajax({ 
 				method: "POST", 
-				url: "/coupon/new",
+				url: appRoot + "/coupon/new",
 				data: '{"memberId": "${authUser.id}","couponName":"전국 할인쿠폰 7000원"}',
 				contentType: "application/json"
 			}).done(function() {
@@ -49,7 +50,7 @@ $(document).ready(function() {
 		
 			$.ajax({ 
 				method: "POST", 
-				url: "/coupon/new",
+				url: appRoot +"/coupon/new",
 				data: '{"memberId": "${authUser.id}","couponName":"전국 할인쿠폰 14000원"}',
 				contentType: "application/json"
 			}).done(function() {
@@ -68,7 +69,7 @@ $(document).ready(function() {
 		
 			$.ajax({ 
 				method: "POST", 
-				url: "/coupon/new",
+				url: appRoot +"/coupon/new",
 				data: '{"memberId": "${authUser.id}","couponName":"제주도 할인쿠폰 5000원"}',
 				contentType: "application/json"
 			}).done(function() {
@@ -87,7 +88,7 @@ $(document).ready(function() {
 		
 			$.ajax({ 
 				method: "POST", 
-				url: "/coupon/new",
+				url: appRoot +"/coupon/new",
 				data: '{"memberId": "${authUser.id}","couponName":"제주도 할인쿠폰 10000원"}',
 				contentType: "application/json"
 			}).done(function() {
@@ -153,14 +154,14 @@ $(document).ready(function() {
 	<u:navbar />
 
 	<div class="event-container">
-		<img src="/resources/event/eventPic.png" id="eventPic" alt="Snow">
+      <img src="https://i.imgur.com/U7NWCWw.png" id="eventPic" alt="Snow">
 
-		<!-- <button class="btn">Button</button> -->
-		<input type="image" id="upsideBtn1" src="/resources/event/upsideBtn1.png" />
-		<input type="image" id="upsideBtn2" src="/resources/event/upsideBtn2.png" />
-		<input type="image" id="downsideBtn1" src="/resources/event/downsideBtn1.png" />
-		<input type="image" id="downsideBtn2" src="/resources/event/downsideBtn2.png" />
-	</div>
+      <!-- <button class="btn">Button</button> -->
+      <input type="image" id="upsideBtn1" src="https://i.imgur.com/pKWzr0t.png" />
+      <input type="image" id="upsideBtn2" src="https://i.imgur.com/OelKJE3.png" />
+      <input type="image" id="downsideBtn1" src="https://i.imgur.com/k0IJbSo.png" />
+      <input type="image" id="downsideBtn2" src="https://i.imgur.com/zUzZ4eV.png" />
+   </div>
 
 	<div id="success-modal" class="modal" tabindex="-1">
 		<div class="modal-dialog">

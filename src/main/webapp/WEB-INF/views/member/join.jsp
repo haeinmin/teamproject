@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags"%>
-
+<%@ taglib prefix="u" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
 <body>
 <u:navbar/>
 <div class="signup">
-        <form action="/member/join" method="post">
+        <form action="${root }/member/join" method="post">
             <input type="hidden" name="" value="">
             <div class="signup-info">
                 <div class="sinup-module">
@@ -53,16 +53,16 @@
                         </div>
                     </label>
                 </div>
-                <!--  
+                
                 <div class="sinup-module">
                     <label for="userPassword1" class="sinup-text">
                         <p>비밀번호 확인 *</p>
                         <div>
-                            <input type="password" class="TextField-module__input--kfks8 TextField-module__medium--2zybh" id="userPassword1" name="password1" placeholder="비밀번호를 한번더 입력해주세요." value="">
+                            <input type="password" class="TextField-module__input--kfks8 TextField-module__medium--2zybh" id="userPassword1" name="pwConfirm" placeholder="비밀번호를 한번더 입력해주세요." value="">
                         </div>
                     </label>
                 </div>
-                -->
+                
                 <div class="sinup-module">
                     <label for="userEmail" class="sinup-text">
                         <p>이메일 *</p>
