@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.mapper.SearchMapper">
+	<select id="searchList" resultType="org.zerock.domain.SearchVO">
+	select promotions.id id,
+       promotions.title title,
+       promotions.body body,
+       promotions.countryid countryid,
+	   categories.name name,
+       country.large_country largeCountry, 
+       country.small_country smallCountry,
+	   promotions.photourl,
+	   promotions.likes,
+	    promotions.price
+	   from promotions 
+inner join categories on categories.id = promotions.categoriesid
+inner join country on country.id = promotions.countryid
+where country.large_country Like '%' || #{keyword} || '%'
+or country.small_country Like '%' || #{keyword} || '%'
+	</select>
+</mapper>

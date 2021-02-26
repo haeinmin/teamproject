@@ -24,7 +24,7 @@ public interface MemberService {
 	//회원 정보 체크
 	public boolean checkMember(String memA, String memB);
 
-	MemberVO getMemberId(String id);
+	public MemberVO getMemberId(String id);
 	
 	//이메일발송
 	public void sendEmail(MemberVO vo, String div) throws Exception;

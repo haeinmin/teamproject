@@ -29,9 +29,14 @@ public class AppListener implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent sce)  { 
+    	ServletContext app = sce.getServletContext();
     	// application 영역에 Context root 추가  
          ServletContext application = sce.getServletContext();
+         //건희 사진 루트 
+         String staticPath = "https://objectstorage.ap-seoul-1.oraclecloud.com/n/cnq0frxctuu1/b/bucket-20210210-1438/o/";
+         
          application.setAttribute("root", application.getContextPath());
+         app.setAttribute("staticPath", staticPath);
     }
 	
 }

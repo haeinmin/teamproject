@@ -1,0 +1,336 @@
+main.traveler {
+  background-color: #f5f6f7;
+  font-size: 0;
+}
+.traveler-container {
+  margin: 0 auto;
+  padding: 50px 0 102px;
+  position: relative;
+  width: 880px;
+}
+.clearfix {
+  overflow: hidden;
+}
+.traveler-container .sidebar-heading {
+  color: #495056;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 17px;
+}
+.traveler-sidebar {
+  color: #343a40;
+  display: inline-block;
+  float: left;
+  margin-right: 18px;
+  width: 250px;
+}
+.traveler-sidebar .box {
+  margin-bottom: 0;
+}
+.traveler-container .box {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 0 #e9ecef;
+  margin-bottom: 8px;
+}
+.box.profile-container {
+  border-bottom: 1px solid #e9ecef;
+  height: 250px;
+  padding: 42px 10px 30px;
+  text-align: center;
+}
+.profile .img-circle {
+  border: 2px solid #e9ecef;
+}
+.img-circle {
+  border-radius: 50%;
+}
+.box.profile-container .username {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 11px 0 23px;
+}
+.traveler-container .box .text-md {
+  font-size: 14px;
+}
+.box.profile-container .setting {
+  font-weight: 500;
+}
+.traveler-sidebar .icon {
+  margin-bottom: 2px;
+  margin-right: 2px;
+}
+.item-inline {
+  display: inline-block;
+}
+.traveler-sidebar .box {
+  margin-bottom: 0;
+}
+.traveler-container .box {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 0 #e9ecef;
+  margin-bottom: 8px;
+}
+.box.promotion-container {
+  padding: 13px 20px;
+}
+.clearfix {
+  overflow: hidden;
+}
+.box.promotion-container .item {
+  display: block;
+  font-weight: 500;
+  margin: 7px 0;
+}
+.traveler-container .box .text-md {
+  font-size: 14px;
+}
+.box.promotion-container .item-header {
+  display: inline-block;
+  text-align: left;
+  width: 40%;
+}
+.traveler-container .box .text-md {
+  font-size: 14px;
+}
+.box.promotion-container .item-count {
+  color: #2b96ed;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-align: right;
+  width: 60%;
+}
+.box.promotion-container .item-count .arrow {
+  vertical-align: text-bottom;
+}
+.traveler-body {
+  display: inline-block;
+  width: 610px;
+}
+.traveler-container .box {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 0 #e9ecef;
+  margin-bottom: 8px;
+}
+.member-box {
+  color: #495056;
+  font-weight: 500;
+  position: relative;
+}
+.clearfix {
+  overflow: hidden;
+}
+.member-box .member-container {
+  font-size: 14px;
+  padding: 50px 40px 40px;
+  position: relative;
+}
+.member-box .btn-modify {
+  font-weight: 600;
+  position: absolute;
+  right: 40px;
+  top: 32px;
+  width: 70px;
+  z-index: 10;
+}
+.traveler-container .box {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 0 0 #e9ecef;
+  margin-bottom: 8px;
+}
+.member-box {
+  color: #495056;
+  font-weight: 500;
+  position: relative;
+}
+.btn--type-outline {
+  background-color: #fff;
+  border: solid 1px #ced4da;
+  color: #495056 !important;
+}
+.btn--size-xs {
+  font-size: 13px;
+  height: 32px;
+  line-height: 30px;
+}
+.btn-new {
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+  border-radius: 2px;
+  /* border: 0; */
+  cursor: pointer;
+  display: block;
+  /* font-size: 16px; */
+  font-weight: 700;
+  /* height: 48px; */
+  /* line-height: 46px; */
+  padding: 0;
+  text-align: center;
+  width: 120px;
+}
+
+.clearfix {
+  overflow: hidden;
+}
+.member-box .profile-img-container {
+  margin-bottom: 50px;
+  position: relative;
+  text-align: center;
+}
+.member-box .profile-img-container .text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 15px;
+}
+.member-box .member-wrapper {
+  margin-bottom: 10px;
+}
+.member-box.mode-readonly .form-group {
+  height: 29px;
+}
+.member-box .form-group {
+  line-height: 27px;
+  margin-bottom: 25px;
+  position: relative;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.member-box .form-group .title {
+  font-weight: 600;
+  position: absolute;
+  width: 122px;
+}
+.member-box .form-group.form-input-group .input-wrapper {
+  width: 100%;
+}
+.member-box .form-group .input-wrapper {
+  display: inline-block;
+  padding-left: 122px;
+}
+.member-box.mode-readonly .text-content[readonly] {
+  border: 0;
+  cursor: text;
+  height: 27px;
+  line-height: 27px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 14px;
+}
+.member-box.mode-readonly .text-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  background-color: #fff;
+  color: #343a40;
+  font-weight: 500;
+  height: 45px;
+  margin-top: 0;
+  padding: 0 20px;
+  font-size: 14px;
+}
+.form-group .help-block {
+  font-size: 12px;
+}
+.fv-form-bootstrap .help-block {
+  margin-bottom: 0;
+}
+.help-block {
+  margin-top: 7px;
+  margin-bottom: 8px;
+}
+small,
+.small {
+  font-size: 80%;
+  font-weight: normal;
+}
+small {
+  font-size: 80%;
+}
+.member-box.mode-editable .form-group {
+  min-height: 45px;
+  margin-bottom: 10px;
+}
+.member-box .form-group {
+  line-height: 27px;
+  margin-bottom: 25px;
+  position: relative;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.member-box.mode-editable .form-group .text-middle {
+  line-height: 45px;
+}
+.member-box .form-group .title {
+  font-weight: 600;
+  position: absolute;
+  width: 122px;
+}
+.member-box.mode-editable .form-btn-wrap {
+  border-top: 1px solid #dee2e6;
+  display: block;
+  padding-top: 24px;
+  margin-top: 24px;
+}
+.member-box .form-btn-wrap {
+  text-align: center;
+}
+.form-btn-container {
+  margin: 0 -4px;
+  overflow: visible;
+}
+.clearfix {
+  overflow: hidden;
+}
+.form-btn-container .btn--width-50 {
+  display: inline-block;
+  float: left;
+  padding: 0 4px;
+  width: 50%;
+}
+.btn--type-gray {
+  background-color: #e9ecef;
+  color: #495056 !important;
+}
+
+.btn--width-100 {
+  width: 100%;
+}
+.btn--size-sm {
+  font-size: 14px;
+  height: 40px;
+  line-height: 38px;
+}
+.btn--type-primary {
+  background-color: #51abf3;
+  color: #fff !important;
+}
+.btn--width-100 {
+  width: 100%;
+}
+.btn--size-sm {
+  font-size: 14px;
+  height: 40px;
+  line-height: 38px;
+}
+.traveler-body .text-clickable-container {
+  margin-top: 25px;
+  text-align: center;
+}
+.traveler-body .text-clickable-container .text.text-sm {
+  font-size: 12px;
+}
+.traveler-body .text-clickable-container .text {
+  color: #848c94;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  text-decoration: underline;
+}

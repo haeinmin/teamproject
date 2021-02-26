@@ -10,5 +10,5 @@ public interface CouponService {
 	
 	public Integer duplicateCheck(CouponVO vo);
 	
-	public List<CouponVO> myCouponList(CouponVO vo);
+	public List<CouponVO> getList(String id);
 }

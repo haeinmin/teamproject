@@ -13,8 +13,8 @@
 		SELECT couponNo FROM coupon WHERE memberId = #{memberId} and couponName LIKE #{couponName}
 	</select>
 	
-	<select id="getList">
-		SELECT couponName WHERE memberId = #{memberId}
+	<select id="getList" resultType="org.zerock.domain.CouponVO">
+		SELECT couponName from coupon WHERE memberId = #{memberId, jdbcType=VARCHAR}
 	</select>
 </mapper>
 

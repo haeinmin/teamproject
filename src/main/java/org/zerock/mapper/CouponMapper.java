@@ -10,5 +10,5 @@ public interface CouponMapper {
 	
 	public Integer check(CouponVO vo);
 	
-	public List<CouponVO> getList();
+	public List<CouponVO> getList(String memberId);
 }

@@ -1,0 +1,589 @@
+@charset "EUC-KR";
+body {
+  background: #f1f3f5;
+}
+
+.ticket_search_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  background-color: #51abf3;
+}
+
+.ticket_list_container {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - 90px);
+  padding-top: 20px;
+}
+
+.ticket_list_container .ticket_list_information {
+  display: flex;
+  width: 64%;
+}
+
+.airline-ticket-search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+  position: relative;
+}
+
+.airline-ticket-search-container > div {
+  width: 92%;
+}
+
+.airline-ticket-search-container > div > div,
+button {
+  margin: 0 2px;
+}
+
+.airline-ticket-search-container > div > div,
+button:first-child {
+  margin-left: 0;
+}
+
+.airline-ticket-search-container .title {
+  padding-bottom: 10px;
+}
+
+.airline-ticket-search-container .title span {
+  width: 100%;
+  height: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.airline-ticket-search-container > .ticket-search-container {
+  position: relative;
+  display: flex;
+  height: calc(100% - 30px);
+}
+
+.travel {
+  display: flex;
+  background-color: #fff;
+  flex: 1.6;
+  border-radius: 2px;
+}
+
+.departure,
+.arrival {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.departure,
+.arrival > span {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+}
+
+.change button {
+  width: 30px;
+  height: 30px;
+  background-color: #f1f3f5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  background: white;
+  flex: 1;
+  border-radius: 2px;
+}
+
+.date-container .fa-calendar {
+  font-size: 23px;
+  padding: 7px;
+  color: #51abf3;
+}
+
+.date-container > input[type='text'] {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px !important;
+  font-size: 1.5rem;
+}
+
+.passenger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  flex: 1;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.passenger .fa-user {
+  margin: 0px 10px;
+  font-size: 23px;
+  color: #51abf3;
+}
+
+.passenger span {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.passenger .fa-angle-down {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+}
+
+.search-button {
+  width: 75px;
+  background-color: #51abf3;
+  background-color: white;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.search-button span {
+  color: #51abf3;
+  font-size: 17px;
+}
+
+.airline-ticket-main-container {
+  width: calc(100% - 240px);
+}
+
+.header-result-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 60px;
+}
+
+.result-filter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+.result-filter select {
+  width: 170px;
+  height: 40px;
+  outline: none;
+  padding-left: 12px;
+  font-size: 14px;
+  line-height: normal;
+  border: 1px solid #dee2e6;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.result-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 2;
+}
+
+.result-information h3 {
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  color: #343a40;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.result-information p {
+  margin-top: 0.5rem;
+  font-size: 12px;
+  color: #848c94;
+}
+
+.result-element-container {
+  margin-top: 10px;
+}
+
+.sorted-informaton-container {
+  height: 56px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+  box-shadow: 0 0 1px 0 rgb(0 0 0 / 50%);
+}
+
+.sorted-margin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  margin-right: 10px;
+}
+
+.information-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+}
+
+.tag-area {
+  border: 1px solid #2b96ed;
+  color: #2b96ed;
+  line-height: 22px;
+  font-size: 13px;
+  display: inline-block;
+  min-width: 44px;
+  height: 24px;
+  padding: 0 5px;
+  border-radius: 2px;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: bold;
+}
+
+.departure-and-arrival strong {
+  float: left;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.departure-and-arrival i {
+  float: left;
+  margin: 0 8px;
+  margin-top: 4px;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.airline-date {
+  float: left;
+  height: 24px;
+  line-height: 24px;
+  font-weight: normal;
+  min-width: 97px;
+  font-size: 14px;
+  color: #343a40;
+}
+
+.ticket-flex-item {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.ticket-flex-item:hover {
+  box-shadow: 0 0 1px 0 rgb(0 0 0 / 15%), 0 1px 4px 0 rgb(0 0 0 / 15%);
+}
+
+.ticket-flex-item button {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  min-width: 64px !important;
+  padding: 0 10px !important;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.08s ease-out;
+  background-color: #51abf3;
+  color: #fff !important;
+  outline: none;
+  border: none;
+}
+
+.ticket-flex-item button:hover {
+  border-color: transparent;
+  background-color: #2b96ed;
+}
+
+.airline-ticket-left-info {
+  display: flex;
+  align-items: center;
+  height: 80%;
+  flex: 1.3;
+}
+
+.airline-ticket-left-info img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.airline-ticket-left-info .airline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: calc(100% - 40px);
+  height: 40px;
+}
+
+.airline-ticket-left-info .airline em {
+  min-width: 89px;
+  display: block;
+  margin-top: 1px;
+  font-size: 13px;
+  font-style: normal;
+  margin-left: 10px;
+}
+
+.airline-ticket-left-info .airline em .num {
+  margin-top: 6px;
+  line-height: 15px;
+}
+
+.airline-ticket-timeline-center-info {
+  display: flex;
+  height: 80%;
+  flex: 1.8;
+}
+
+.airline-ticket-timeline-center-info .departure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.airline-ticket-timeline-center-info .departure span:first-child {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.airline-ticket-timeline-center-info .departure span:last-child {
+  font-size: 12px;
+  color: #848c94;
+  font-weight: normal;
+}
+
+.airline-ticket-timeline-center-info .time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1.5;
+
+  font-size: 13px;
+  color: #848c94;
+  font-weight: normal;
+  line-height: 16px;
+}
+
+.airline-ticket-timeline-center-info .time span {
+  font-size: 12px;
+}
+
+.airline-ticket-timeline-center-info .arrival {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.airline-ticket-timeline-center-info .arrival span:first-child {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.airline-ticket-timeline-center-info .arrival span:last-child {
+  font-size: 12px;
+  color: #848c94;
+  font-weight: normal;
+}
+
+.airline-ticket-seat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+  padding: 0px 20px;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.airline-ticket-seat .seat-class {
+  float: left;
+  display: inline-block;
+  min-width: 87px;
+  text-align: left;
+  margin-right: 16px;
+  line-height: 40px;
+}
+
+.airline-ticket-seat .seat-num {
+  float: left;
+  /* margin-right: 24px; */
+  line-height: 40px;
+  font-size: 13px;
+  color: #343a40;
+}
+
+.airline-ticket-seat span {
+  font-size: 13px;
+}
+
+.airline-ticket-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  flex: 1;
+}
+
+.airline-ticket-price .total {
+  float: left;
+  line-height: 40px;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 110px;
+  margin-right: 16px;
+  font-size: 20px !important;
+  text-align: right;
+}
+
+.ariline-ticket-aside-container {
+  width: 270px;
+  margin-right: 30px;
+  user-select: none;
+}
+
+.ariline-ticket-aside-container .aside-content {
+  padding: 8px 0;
+  border-top: 1px solid #dee2e6;
+}
+
+.ariline-ticket-aside-container .aside-content h3 {
+  height: 18px;
+  margin-bottom: 0;
+  line-height: 18px;
+  padding: 8px;
+  margin-left: -8px;
+  margin-right: -8px;
+  border-radius: 2px;
+  -webkit-transition: background-color ease-in-out 0.1s;
+  transition: background-color ease-in-out 0.1s;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ariline-ticket-aside-container .aside-content .list {
+  margin-top: 25px !important;
+}
+
+.mrt_select_all {
+  font-size: 13px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.mrt_select_all li {
+  font-size: 13px;
+  margin-top: 0 !important;
+  float: left;
+}
+
+.mrt_select_all li button {
+  background-color: transparent;
+  color: #ced4da;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+}
+
+.mrt_select_all li button.active {
+  color: #2b96ed;
+  cursor: pointer !important;
+}
+
+.mrt_select_all li:first-child:after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  margin: 0 8px;
+  vertical-align: middle;
+  background-color: #adb5bd;
+  visibility: inherit;
+}
+
+#checkAirList {
+  margin-bottom: 16px;
+}
+
+.mrt_check_wrap input {
+  display: none;
+}
+
+.k1_input_check {
+  padding: 0;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+}
+
+.mrt_check_wrap label {
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.mrt_check_wrap input:checked + label span.ico_checkbox {
+  background: url(https://flights.myrealtrip.com/air/imgs_ibe/mrt/btn/main/ico_checkbox.png) no-repeat 0 0px;
+  border: none;
+  background-size: 20px;
+}
+
+.mrt_check_wrap label span.ico_checkbox {
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: all 0.08s ease-out;
+}
+
+.mrt_check_wrap label {
+  font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', '¸¼Àº °íµñ', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #343a40;
+  letter-spacing: -0.2px;
+  -webkit-font-smoothing: antialiased;
+}

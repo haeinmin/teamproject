@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.CouponVO;
 import org.zerock.domain.MemberVO;
+import org.zerock.domain.PageDTO;
 import org.zerock.service.CouponService;
 
 import lombok.AllArgsConstructor;
@@ -52,13 +53,12 @@ public class CouponController {
 		} return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	
-	@GetMapping("/myCouponList")
-	public void myCouponList(@RequestBody CouponVO vo, HttpSession session) {
-		/*
-		 * MemberVO user = (memberVO) session.getAttribute(authUser); List<CouponVO>
-		 * list = CouponService.myCouponList(vo);
-		 */
-	}
+//	
+//	@GetMapping("/myCouponList")
+//	public void myCouponList(String inputId, CouponVO vo, Model model) {
+//		List<CouponVO> couponList = couponService.getList(vo);
+//		model.addAttribute("list", couponList);
+//		
+//	}
 
 }

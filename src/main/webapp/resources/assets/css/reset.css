@@ -93,6 +93,7 @@ a {
     color: #0275d8;
     text-decoration: none;
     background-color: transparent;
+    text-decoration: none;
 }
 
 a, area, button, [role="button"], input, label, select, summary, textarea {

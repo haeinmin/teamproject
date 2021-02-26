@@ -253,7 +253,7 @@ padding-left: 13px;}
 					</div>
 					<div class="form-group">
 						<label for="replier-input" class="col-form-label"> 작성자 </label> <input
-							type="text" class="form-control" id="replier-input">
+							type="text" class="form-control" id="replier-input" readonly value="${authUser.nickname }">
 					</div>
 				</div>
 

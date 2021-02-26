@@ -36,6 +36,10 @@
 		<constructor-arg ref="dataSource" />
 	</bean>
 	
+	<bean id="ociConfigPath" class="java.lang.String">
+      <constructor-arg value="/Users/haein/home/opc/oci/config"></constructor-arg>
+   </bean>
+
 	<mybatis-spring:scan
 		base-package="org.zerock.mapper" />
 		

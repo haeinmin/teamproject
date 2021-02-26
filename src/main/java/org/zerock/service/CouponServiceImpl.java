@@ -28,8 +28,8 @@ public class CouponServiceImpl implements CouponService {
 	}
 	
 	@Override
-	public List<CouponVO> myCouponList(CouponVO vo) {
-		return couponMapper.getList();
+	public List<CouponVO> getList(String id) {
+		return couponMapper.getList(id);
 	}
 }
 

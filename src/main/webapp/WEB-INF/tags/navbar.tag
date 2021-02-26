@@ -8,7 +8,7 @@
 			<nav class="header-nav">
 				<!-- logo -->
 				<div class="logo logo-container">
-					<a href="${root }/member/home"> <img class="logo-img"
+					<a href="${root }/"> <img class="logo-img"
 						src="https://media.vlpt.us/images/jian/post/a5aa6b15-69a1-4ec2-ac59-db10e1c5eafc/faketrip.png"
 						alt="logo">
 					</a>
@@ -16,14 +16,13 @@
 				<!-- logo -->
 				<!-- search -->
 				<div class="search-bar">
-					<div class="search-input">
-						<div class="search-container">
-							<i class="fas fa-search"></i> <input type="search"
-								placeholder="도시나 상품을 검색해보세요" spellcheck="false"
-								autocomplete="off">
-						</div>
-					</div>
-				</div>
+                    <div class="search-input">
+                        <form action="${root }/search/" class="search-container">
+                            <i class="fas fa-search"></i>
+                            <input name="keyword" type="search" placeholder="나라 혹은 도시를 검색해보세요" spellcheck="false" autocomplete="off">
+                        </form>
+                    </div>
+                </div>
 				<!-- search -->
 				<!-- menu -->
 				<div class="header-menu white">
@@ -32,7 +31,7 @@
 					</u:isLogin> --%>
 					<u:isLogin>
 						<div class="header-menu-item">
-							<a class="d-line-block" href="#" data-turbolinks="false">마이페이지</a>
+							<a class="d-line-block" href="${root }/member/myPage" data-turbolinks="false">마이페이지</a>
 						</div>
 					</u:isLogin>
 					<u:isAdmin>
@@ -66,17 +65,17 @@
 			<nav class="header-navigation-container">
 				<div class="header-navigation-wrapper navigation-inner">
 					<div class="navigation-item">
-						<a href="#"> <img
-							src="https://d2ur7st6jjikze.cloudfront.net/cms_icons/49_original_1608700445.png?1608700445"
-							alt="ic_flight_40x40"> <span>항공권</span>
-						</a>
-					</div>
-					<div class="navigation-item">
-						<a href="#"> <img
-							src="https://d2ur7st6jjikze.cloudfront.net/cms_icons/50_original_1608701561.png?1608701561"
-							alt="ic_bnb_40x40"> <span>숙소</span>
-						</a>
-					</div>
+                        <a href="${root }/resources/view/ari-line.jsp">
+                            <img src="https://d2ur7st6jjikze.cloudfront.net/cms_icons/49_original_1608700445.png?1608700445" alt="ic_flight_40x40">
+                            <span>항공권</span>
+                        </a>
+                    </div>
+                    <div class="navigation-item">
+                        <a href="${root }/resources/view/hotel.jsp">
+                            <img src="https://d2ur7st6jjikze.cloudfront.net/cms_icons/50_original_1608701561.png?1608701561" alt="ic_bnb_40x40">
+                            <span>숙소</span>
+                        </a>
+                    </div>
 					<div class="navigation-item">
 						<a href="${root }/coupon"> <img
 							src="https://d2ur7st6jjikze.cloudfront.net/cms_icons/18_original_1592284955.png?1592284955"
@@ -94,7 +93,7 @@
 					</div>
 					<u:isAdmin>
 						<div class="navigation-item">
-							<a href="#"> <span>상품 등록</span>
+							<a href="${root }/write/write"> <span>상품 등록</span>
 							</a>
 						</div>
 					</u:isAdmin>

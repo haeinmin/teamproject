@@ -5,6 +5,35 @@
 
 <html>
 <head>
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+// 모달 출력 조건
+	$(document).ready(function(){
+		var message = '${message}';
+		
+		console.log("fdg");
+		
+		checkModal(message);
+		history.replaceState({}, null, null);
+		
+		function checkModal(message) {
+			if (message && history.state == null) {
+				console.log("function 탐");
+				$("#myModal").modal("show");
+			}
+		}
+			
+		
+	});
+</script>
 	<title>my fake trip</title>
 </head>
 <meta charset="UTF-8">
@@ -826,5 +855,27 @@
         },
       });
     </script>
+ <%--모달창 --%>  
+    
+ <div id="myModal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">알림</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>${message }</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
 </body>
 </html>
