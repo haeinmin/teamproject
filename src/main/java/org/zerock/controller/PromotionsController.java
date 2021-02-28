@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.CategoriesVO;
 import org.zerock.domain.CountryVO;
 import org.zerock.domain.Criteria;
@@ -58,64 +59,64 @@ public class PromotionsController {
 	}
 	
 	//추가
-	@PostMapping(value ="/register",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<String> create(@RequestBody PromotionsVO vo, MultipartFile file, Model model){
-		log.info("vo : "+ vo);
-		
-		List<CategoriesVO> list1 = Catservice.getList();
-		model.addAttribute("list1", list1);
-		
-		List<CountryVO> list2 = Couservice.getList();
-		model.addAttribute("list2", list2);
-		
-		vo.setPhotourl("");
-		int insertCount = Proservice.register(vo);
-		
-		if (file != null) {
-			vo.setPhotourl(vo.getId() + "_" + file.getOriginalFilename());
-			Proservice.modify(vo);
-//			fileUpSvc.write(file, board.getFilename());
-			try {
-				fileSvc.transfer(file, vo.getPhotourl());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-		log.info("PromotionsController count : " + insertCount);
-		
-		if(insertCount == 1) {
-			return new ResponseEntity<>("success",HttpStatus.OK);
-		}else {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	
-	@PostMapping(value ="/register2")
-	public ResponseEntity<String> register(PromotionsVO vo, MultipartFile file, Model model) {
+//	@PostMapping(value ="/register",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
+//	public ResponseEntity<String> create(@RequestBody PromotionsVO vo, MultipartFile file, Model model){
+//		log.info("vo : "+ vo);
+//		
+//		List<CategoriesVO> list1 = Catservice.getList();
+//		model.addAttribute("list1", list1);
+//		
+//		List<CountryVO> list2 = Couservice.getList();
+//		model.addAttribute("list2", list2);
+//		
+//		vo.setPhotourl("");
+//		int insertCount = Proservice.register(vo);
+//		
+//		if (file != null) {
+//			vo.setPhotourl(vo.getId() + "_" + file.getOriginalFilename());
+//			Proservice.modify(vo);
+////			fileUpSvc.write(file, board.getFilename());
+//			try {
+//				fileSvc.transfer(file, vo.getPhotourl());
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//		}
+//		
+//		log.info("PromotionsController count : " + insertCount);
+//		
+//		if(insertCount == 1) {
+//			return new ResponseEntity<>("success",HttpStatus.OK);
+//		}else {
+//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
+//	
+	@PostMapping("/register")
+	public String register(PromotionsVO vo, MultipartFile file, Model model , RedirectAttributes rttr) {
 		log.info("register");
 		log.info(vo);
 		log.info(file);
-		int insertCount = Proservice.register(vo);
 		
 		vo.setPhotourl("");
+		Proservice.register(vo);
 		
 		if (file != null && file.getSize() > 0) {
 			vo.setPhotourl(vo.getId() + "_" + file.getOriginalFilename());
 			Proservice.modify(vo);
 			log.info(file.getOriginalFilename());
+			
 			try {
 				fileSvc.transfer(file, vo.getPhotourl());
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
 		}
-		if(insertCount == 1) {
-			return new ResponseEntity<>("success",HttpStatus.OK);
-		}else {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		rttr.addAttribute("result", vo.getId());
+		rttr.addFlashAttribute("message", vo.getId() + "번이 등록되었습니다.");
+		
+		return "redirect:/home";
 	}
 	
 	//하나만 읽을때

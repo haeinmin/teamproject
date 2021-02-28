@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,9 +18,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.zerock.domain.MemberVO;
 import org.zerock.domain.TreviewVO;
 import org.zerock.service.TreviewService;
@@ -46,7 +42,7 @@ public class TreviewInnerController {
 	 * @param model
 	 */
 	@GetMapping("/list")
-	public void list(@ModelAttribute("params") TreviewVO params, Model model) {
+	public void list(@ModelAttribute("params") TreviewVO params, Model model, HttpServletRequest request) {
 
 		log.info("[/treview/list] 여행후기 목록 :: params >> " + ToStringBuilder.reflectionToString(params));
 
@@ -58,6 +54,8 @@ public class TreviewInnerController {
 		List<TreviewVO> treviewList = treviewService.selectTreviewList(params);
 		model.addAttribute("treviewList", treviewList);
 
+		this.getFileUrl(request, model);
+
 	}
 
 	/**
@@ -66,7 +64,7 @@ public class TreviewInnerController {
 	 * @param params
 	 */
 	@GetMapping("/write")
-	public void write(@ModelAttribute("params") TreviewVO params, Model model) {
+	public void write(@ModelAttribute("params") TreviewVO params, Model model, HttpServletRequest request) {
 
 		log.info("[/treview/write] 여행후기 등록/수정 :: params >> " + ToStringBuilder.reflectionToString(params));
 
@@ -79,6 +77,8 @@ public class TreviewInnerController {
 		List<TreviewVO> orderlist = treviewService.selectOrderList();
 		model.addAttribute("orderlist", orderlist);
 
+		this.getFileUrl(request, model);
+
 	}
 
 	/**
@@ -90,31 +90,18 @@ public class TreviewInnerController {
 	 * @throws IOException
 	 */
 	@PostMapping("/writeSave")
-	public void writeSave(Model model, HttpServletResponse response, MultipartHttpServletRequest request, @RequestParam("imageFile") MultipartFile imageFile) throws IOException {
+	public void writeSave(Model model, HttpServletResponse response, HttpServletRequest request) throws IOException {
 
 		TreviewVO params = new TreviewVO();
 		params.setReviewno(request.getParameter("reviewno").isEmpty() ? 0 : Integer.parseInt(request.getParameter("reviewno").toString()));
 		params.setReviewtitle(request.getParameter("reviewtitle"));
 		params.setOrderno(request.getParameter("orderno").isEmpty() ? 0 : Integer.parseInt(request.getParameter("orderno").toString()));
 		params.setReviewcontent(request.getParameter("reviewcontent"));
+		params.setImg_path(request.getParameter("img_path"));
+		params.setImg_name(request.getParameter("img_name"));
 		params.setId(request.getParameter("id"));
 		if (params.getId() == null) {
 			params.setId("newbie");
-		}
-
-		if (imageFile != null && imageFile.getOriginalFilename() != null && !imageFile.getOriginalFilename().isEmpty()) {
-			String ext = imageFile.getOriginalFilename().substring(imageFile.getOriginalFilename().lastIndexOf(".") + 1);
-			File dir = new File(imagePath);
-			System.out.println("dir.exists()::" + dir.exists());
-			if (!new File(imagePath).exists()) {
-				new File(imagePath).mkdirs();
-			}
-			String uuid = UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
-			String fullDir = imagePath + "/" + uuid + "." + ext;
-			params.setImg_path(fullDir);
-			params.setImg_key(uuid);
-			params.setImg_name(uuid + "." + ext);
-			imageFile.transferTo(new File(fullDir));
 		}
 
 		log.info("[/treview/writeSave] 여행후기 등록/수정 :: params >> " + ToStringBuilder.reflectionToString(params));
@@ -140,7 +127,7 @@ public class TreviewInnerController {
 	 * @param model
 	 */
 	@GetMapping("/view")
-	public void view(@ModelAttribute("params") TreviewVO params, Model model) {
+	public void view(@ModelAttribute("params") TreviewVO params, Model model, HttpServletRequest request) {
 
 		log.info("[/treview/view] 여행후기 상세보기 :: params >> " + ToStringBuilder.reflectionToString(params));
 
@@ -156,6 +143,8 @@ public class TreviewInnerController {
 
 		model.addAttribute("treview", treview);
 		model.addAttribute("replyList", replyList);
+
+		this.getFileUrl(request, model);
 
 	}
 
@@ -313,6 +302,14 @@ public class TreviewInnerController {
 			response.sendRedirect(request.getContextPath() + "/treview/message?message=/treview/tempLogin/logout&redirect=/treview/list");
 		}
 
+	}
+
+	private void getFileUrl(HttpServletRequest request, Model model) {
+		String url = javax.servlet.http.HttpUtils.getRequestURL(request).toString();
+		model.addAttribute("ssl", "http://hlupload.yjoon.com");
+		if (url.indexOf("http://") > -1) {
+			model.addAttribute("ssl", "https://hlupload.yjoon.com");
+		}
 	}
 
 }

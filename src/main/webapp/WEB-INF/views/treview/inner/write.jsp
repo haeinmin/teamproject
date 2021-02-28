@@ -56,7 +56,7 @@
             </div>
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
-            <form action="${root}/treview/writeSave" id="params" name="params" method="post" role="form" class="contactForm" enctype="multipart/form-data">
+            <form action="${root}/treview/writeSave" id="params" name="params" method="post" role="form" class="contactForm">
               <input type="hidden" id="reviewno" name="reviewno" value="${treview.reviewno}">
               <input type="hidden" id="id" name="id" value="${authUser.id}">
               <input type="hidden" id="img_path" name="img_path" value="">
@@ -82,7 +82,7 @@
                   		<c:if test="${not empty treview.img_path}">
                   			<c:set var="prevImgPath" value="/index.php?histImg=${treview.img_name}" />
                   		</c:if>
-                  		<iframe id="iFrameUpload" src="http://hlupload.yjoon.com/upload${prevImgPath}" style="display: block; border: none; overflow-x: hidden; overflow-y: hidden; width: 300px; height: 250px;"></iframe>
+                  		<iframe id="iFrameUpload" src="${ssl}/upload${prevImgPath}" style="display: block; border: none; overflow-x: hidden; overflow-y: hidden; width: 300px; height: 250px;"></iframe>
                   	</div>
                   <c:if test="${not empty authUser}">
                   <div class="text-center">

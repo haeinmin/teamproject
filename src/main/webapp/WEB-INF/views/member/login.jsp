@@ -80,7 +80,7 @@
                 </div>
                 <div class="sinup-link">
                     <span class="sinup-join">아직 회원이 아니신가요?</span>
-                    <a href="#" class="sinup-join-link">회원가입</a>
+                    <a href="${root }/member/join" class="sinup-join-link">회원가입</a>
                 </div>
             </div>
     </div>
