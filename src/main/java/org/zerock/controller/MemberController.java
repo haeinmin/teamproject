@@ -77,7 +77,7 @@ public class MemberController {
 
 	@GetMapping("/home")
 	public String home() {
-		return "redirect:/";
+		return "redirect:/home";
 	}
 
 	// ##회원가입 - GET
@@ -157,7 +157,7 @@ public class MemberController {
 		if (session.getAttribute("authUser") != null) {
 			// 로그인 된 상태
 //				rttr.addFlashAttribute("login", true);
-			return "redirect:/member/home";
+			return "redirect:/home";
 		} else {
 			// 로그인 안된 상태
 			return "member/login";
@@ -200,7 +200,7 @@ public class MemberController {
 			model.addAttribute("message", "아이디가 없거나 패스워드가 일치하지 않습니다.");
 			return "member/login";
 		}
-		return "redirect:/member/home";
+		return "redirect:/home";
 	}
 
 	// ##joinErrors
@@ -257,7 +257,7 @@ public class MemberController {
 			session.invalidate();
 		}
 
-		return "redirect:/member/home";
+		return "redirect:/home";
 	}
 
 	public void checkEmpty(Map<String, Boolean> errors, String value, String fieldName) {

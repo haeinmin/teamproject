@@ -8,7 +8,7 @@
 			<nav class="header-nav">
 				<!-- logo -->
 				<div class="logo logo-container">
-					<a href="${root }/"> <img class="logo-img"
+					<a href="${root }/home"> <img class="logo-img"
 						src="https://media.vlpt.us/images/jian/post/a5aa6b15-69a1-4ec2-ac59-db10e1c5eafc/faketrip.png"
 						alt="logo">
 					</a>
